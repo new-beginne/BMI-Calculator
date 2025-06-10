@@ -1,71 +1,173 @@
-
-body {
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100%;
+    background-color: #f6f8fa;
     font-family: 'Roboto', sans-serif;
-    background: #f3f4f6;
-    display: flex;
-    justify-content: center;
-    padding: 40px;
-}
-
-.container {
-    background: white;
-    padding: 30px;
-    border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-}
-
-h1 {
-    text-align: center;
-    color: #2c3e50;
-}
-
-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-}
-
-input, select {
+  }
+  
+  /* Main Layout */
+  main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Form Styling */
+  form label {
+    display: block;
+    margin-top: 15px;
+  }
+  
+  form input,
+  form select,
+  form button {
+    width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-}
-
-button {
-    background-color: #4f46e5;
-    color: white;
-    border: none;
-    padding: 12px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #055342;
+    font-size: 15px;
+  }
+  
+  form button {
+    background-color: #046b44 !important;
+    color: rgb(93, 136, 6);
     font-weight: bold;
-    transition: background-color 0.3s ease;
-}
+    cursor: pointer;
+    margin-top: 15px;
 
-button:hover {
-    background-color: #4338ca;
-}
-
-.result {
-    margin-top: 25px;
-    padding: 15px;
-    background-color: #e0f7fa;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.advice {
-    margin-top: 10px;
-    font-style: italic;
-    color: #555;
-}
-
-.error {
+    transition: background 0.3s ease;
+  }
+  
+  form button:hover {
+    background-color: #287a75 !important;
+  }
+  
+  /* Result Section */
+  .result {
+    margin-top: 20px;
+  }
+  
+  .error {
     color: red;
     font-weight: bold;
-}
-
+  }
+  
+  /* ========== Footer Section ========== */
+  footer {
+    background-color: #1d1b1b;
+    padding: 20px 10px;
+    border-top: 1px solid #ccc;
+    margin-top: auto;
+    width: 100%;
+  }
+  
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    gap: 15px;
+  }
+  
+  /* Footer Left - Profile & Name */
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .footer-left img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .footer-left div {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .footer-left a {
+    color: #1877f2;
+    font-style: italic;
+    text-decoration: none;
+  }
+  
+  .footer-left a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Footer Middle - Contact Info */
+  .footer-middle {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .footer-middle-title {
+    font-family: cursive;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #444;
+  }
+  
+  .footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+  
+  .footer-icons a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .footer-icons i {
+    font-size: 16px;
+  }
+  
+  /* Footer Right - Rights */
+  .footer-right {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  /* Responsive Footer */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+    }
+  }
+  

@@ -1,71 +1,218 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>BMI Calculator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>BMI Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Font & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+      background-color: #f6f8fa;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    form label {
+      display: block;
+      margin-top: 15px;
+    }
+    form input, form select, form button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    .result {
+      margin-top: 20px;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #f6f8fa;
+      padding: 20px 10px;
+      border-top: 1px solid #ccc;
+      margin-top: auto;
+    }
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+    .footer-left {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .footer-left img {
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .footer-left div {
+      font-weight: bold;
+    }
+    .footer-left a {
+      color: blue;
+      font-size: 14px;
+      font-style: italic;
+      text-decoration: none;
+    }
+    .footer-middle {
+      flex: 1;
+      margin-bottom: 10px;
+    }
+    .footer-middle-title {
+      font-family: cursive;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .footer-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .footer-icons a {
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .footer-icons i {
+      margin-right: 5px;
+    }
+    .footer-right {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-style: italic;
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .footer-left, .footer-middle, .footer-right {
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
+
 <body>
+
+  <!-- Main content -->
+  <main>
     <div class="container">
-        <h1>BMI Calculator</h1>
-        <form method="POST">
-            <label>Weight (kg):</label>
-            <input type="number" step="0.01" name="weight" required>
+      <h1>BMI Calculator</h1>
+      <form method="POST">
+        <label>Weight (kg):</label>
+        <input type="number" step="0.01" name="weight" required>
 
-            <label>Height:</label>
-            <input type="number" step="0.01" name="height" required>
+        <label>Height:</label>
+        <input type="number" step="0.01" name="height" required>
 
-            <label>Height Unit:</label>
-            <select name="unit">
-                <option value="cm">cm</option>
-                <option value="meter">meter</option>
-                <option value="inch">inch</option>
-                <option value="feet" selected>feet</option>
-            </select>
+        <label>Height Unit:</label>
+        <select name="unit">
+          <option value="cm">cm</option>
+          <option value="meter">meter</option>
+          <option value="inch">inch</option>
+          <option value="feet" selected>feet</option>
+        </select>
 
-            <button type="submit">Calculate</button>
-        </form>
+        <button type="submit">Calculate</button>
+      </form>
 
-        {% if result %}
-            <div class="result">
-                {% if result.error %}
-                    <p class="error">{{ result.error }}</p>
-                {% else %}
-                    <p>Your BMI is: <strong>{{ result.bmi }}</strong></p>
-                    <p>You are: <strong>{{ result.category }}</strong></p>
-                    <p class="advice">{{ result.advice }}</p>
-                {% endif %}
-            </div>
-        {% endif %}
+      {% if result %}
+        <div class="result">
+          {% if result.error %}
+            <p class="error">{{ result.error }}</p>
+          {% else %}
+            <p>Your BMI is: <strong>{{ result.bmi }}</strong></p>
+            <p>You are: <strong>{{ result.category }}</strong></p>
+            <p class="advice">{{ result.advice }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
-   <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+  </main>
 
-    <footer style="background-color: #f0f0f0; padding: 20px; text-align: center; font-size: 14px; color: #333; border-top: 1px solid #ccc; margin-top: 40px;">
-      <p><strong>Created by</strong> Md Nirob Hasan</p>
-      <p><strong>All Rights Reserved by</strong> Nirob</p>
+  <!-- Sticky Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <img src="https://i.postimg.cc/fbpVdbzn/mypic.jpg" alt="Profile" style="height: 60px; width: 60px; border-radius: 50%; margin-right: 10px;">
 
-      <div style="margin-top: 10px;">
-        <a href="https://web.facebook.com/md.nirob.hassan.12327" target="_blank" style="margin: 0 10px; color: #1877f2;">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="mailto:mdnirobhasan248@gmail.com" target="_blank" style="margin: 0 10px; color: #ea4335;">
-          <i class="fas fa-envelope"></i>
-        </a>
-        <a href="tel:+8801610331271" target="_blank" style="margin: 0 10px; color: #34a853;">
-          <i class="fas fa-phone"></i>
-        </a>
-        <a href="https://bmi-calculator-mq28.onrender.com/" target="_blank" style="margin: 0 10px; color: #000;">
-          <i class="fas fa-globe"></i>
-        </a>
+        <div>Developed By <a href="https://facebook.com/md.nirob.hassan.12327" target="_blank">Md Nirob Hasan</a></div>
       </div>
-    </footer>
-</body>
-</html>
-</body>
-</html>
 
+      <div class="footer-middle">
+        <div class="footer-middle-title">Contact:</div>
+        <div class="footer-icons">
+          <a href="https://facebook.com/md.nirob.hassan.12327" target="_blank" style="color:#1877f2;">
+            <i class="fab fa-facebook"></i> Facebook
+          </a>
+          <a href="mailto:mdnirobhasan248@gmail.com" style="color:#e63946;">
+            <i class="fas fa-envelope"></i> Email
+          </a>
+          <a href="tel:+8801610331271" style="color:#2a9d8f;">
+            <i class="fas fa-phone"></i> Phone
+          </a>
+          <a href="https://bmi-calculator-mq28.onrender.com/" style="color:#000;">
+            <i class="fas fa-globe"></i> Website
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        All Rights Reserved by Nirob © 2025
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

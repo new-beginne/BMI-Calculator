@@ -1,0 +1,68 @@
+<!-- templates/history.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BMI History</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    h1 {
+      margin-top: 30px;
+      font-size: 32px;
+      color: #58a6ff;
+    }
+    .history-container {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: #161b22;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(88,166,255,0.2);
+    }
+    .record {
+      text-align: left;
+      background: #21262d;
+      margin-bottom: 15px;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #58a6ff;
+    }
+    .record p {
+      margin: 5px 0;
+    }
+    a.back {
+      color: #58a6ff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Your BMI History</h1>
+  <div class="history-container">
+    {% if history %}
+      {% for record in history %}
+        <div class="record">
+          <p><strong>Date:</strong> {{ record.date }}</p>
+          <p><strong>Weight:</strong> {{ record.weight }} kg</p>
+          <p><strong>Height:</strong> {{ record.height }} {{ record.unit }}</p>
+          <p><strong>BMI:</strong> {{ record.bmi }} ({{ record.category }})</p>
+          <p><strong>Advice:</strong> {{ record.advice }}</p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No history records found.</p>
+    {% endif %}
+  </div>
+  <a href="/" class="back">← Back to Home</a>
+</body>
+</html>

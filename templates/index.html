@@ -167,6 +167,15 @@
 
         <button type="submit">Calculate</button>
       </form>
+      
+      <div style="margin-top: 15px; text-align: right;">
+        <label class="dark-mode-toggle">
+          <input type="checkbox" id="darkModeSwitch">
+          Dark Mode
+        </label>
+      </div>
+      
+      <a href="#" onclick="viewHistory()" style="margin-top:10px; color:rgb(40, 55, 197); text-decoration: none;">View BMI History</a>
 
       {% if result %}
         <div class="result">
@@ -186,8 +195,7 @@
   <footer>
     <div class="footer-container">
       <div class="footer-left">
-        <img src="https://i.postimg.cc/fbpVdbzn/mypic.jpg" alt="Profile" style="height: 60px; width: 60px; border-radius: 50%; margin-right: 10px;">
-
+        <img src="https://i.postimg.cc/fbpVdbzn/mypic.jpg" alt="Profile">
         <div>Developed By <a href="https://facebook.com/md.nirob.hassan.12327" target="_blank">Md Nirob Hasan</a></div>
       </div>
 
@@ -214,6 +222,57 @@
       </div>
     </div>
   </footer>
+  <script>
+    const toggleSwitch = document.getElementById('darkModeSwitch');
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+  
+    // apply mode on page load
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+      toggleSwitch.checked = true;
+    }
+  
+    toggleSwitch.addEventListener('change', () => {
+      if (toggleSwitch.checked) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('darkMode', 'true');
+      } else {
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('darkMode', 'false');
+      }
+    });
+  </script>
+  
+ 
+<script>
+  async function viewHistory() {
+    try {
+      const response = await fetch('/history');
+      const data = await response.json();
+
+      if (data.length === 0) {
+        alert("No BMI history found.");
+        return;
+      }
+
+      let historyText = "Your BMI History:\n\n";
+      data.forEach((item, index) => {
+        historyText += `#${index + 1}\n`;
+        historyText += `Date: ${item.date}\n`;
+        historyText += `Weight: ${item.weight} kg\n`;
+        historyText += `Height: ${item.height} ${item.unit}\n`;
+        historyText += `BMI: ${item.bmi} (${item.category})\n`;
+        historyText += `Advice: ${item.advice}\n\n`;
+      });
+
+      alert(historyText);
+    } catch (error) {
+      alert("Failed to load history.");
+      console.error(error);
+    }
+  }
+</script>
+
 
 </body>
 </html>

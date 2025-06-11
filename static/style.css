@@ -1,173 +1,267 @@
 /* Reset and Base Styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    height: 100%;
-    background-color: #f6f8fa;
-    font-family: 'Roboto', sans-serif;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Main Layout */
-  main {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px;
-  }
-  
-  .container {
-    width: 100%;
-    max-width: 500px;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-  
-  /* Form Styling */
-  form label {
-    display: block;
-    margin-top: 15px;
-  }
-  
-  form input,
-  form select,
-  form button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 6px;
-    border: 1px solid #055342;
-    font-size: 15px;
-  }
-  
-  form button {
-    background-color: #046b44 !important;
-    color: rgb(93, 136, 6);
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 15px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    transition: background 0.3s ease;
-  }
-  
-  form button:hover {
-    background-color: #287a75 !important;
-  }
-  
-  /* Result Section */
-  .result {
-    margin-top: 20px;
-  }
-  
-  .error {
-    color: red;
-    font-weight: bold;
-  }
-  
-  /* ========== Footer Section ========== */
-  footer {
-    background-color: #1d1b1b;
-    padding: 20px 10px;
-    border-top: 1px solid #ccc;
-    margin-top: auto;
-    width: 100%;
-  }
-  
+body {
+  height: 100%;
+  background-color: #f6f8fa;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Main Layout */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Form Styling */
+form label {
+  display: block;
+  margin-top: 15px;
+}
+
+form input,
+form select,
+form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #055342;
+  font-size: 15px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+form button {
+  background-color: #046b44 !important;
+  color: rgb(93, 136, 6);
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background-color: #287a75 !important;
+}
+
+/* Result Section */
+.result {
+  margin-top: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+/* Footer Section */
+footer {
+  background-color: #1d1b1b;
+  padding: 20px 10px;
+  border-top: 1px solid #ccc;
+  margin-top: auto;
+  width: 100%;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  gap: 15px;
+}
+
+/* Footer Left - Profile & Name */
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-left img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.footer-left div {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.footer-left a {
+  color: #19abd8;
+  font-style: italic;
+  text-decoration: none;
+}
+
+.footer-left a:hover {
+  text-decoration: underline;
+}
+
+/* Footer Middle - Contact Info */
+.footer-middle {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-middle-title {
+  font-family: cursive;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.footer-icons a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.footer-icons i {
+  font-size: 16px;
+}
+
+/* Footer Right - Rights */
+.footer-right {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: italic;
+  font-weight: 500;
+  color: #555;
+  font-size: 14px;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
   .footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    max-width: 1200px;
-    margin: auto;
-    gap: 15px;
-  }
-  
-  /* Footer Left - Profile & Name */
-  .footer-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .footer-left img {
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .footer-left div {
-    font-weight: bold;
-    font-size: 14px;
-  }
-  
-  .footer-left a {
-    color: #1877f2;
-    font-style: italic;
-    text-decoration: none;
-  }
-  
-  .footer-left a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Footer Middle - Contact Info */
-  .footer-middle {
-    flex: 1;
     text-align: center;
-  }
-  
-  .footer-middle-title {
-    font-family: cursive;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #444;
-  }
-  
-  .footer-icons {
-    display: flex;
-    justify-content: center;
     gap: 20px;
-    flex-wrap: wrap;
-    font-size: 14px;
   }
-  
-  .footer-icons a {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  
-  .footer-icons i {
-    font-size: 16px;
-  }
-  
-  /* Footer Right - Rights */
-  .footer-right {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-style: italic;
-    font-weight: 500;
-    color: #555;
-    font-size: 14px;
-  }
-  
-  /* Responsive Footer */
-  @media (max-width: 768px) {
-    .footer-container {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 20px;
-    }
-  }
-  
+}
+
+/* ========== DARK MODE ========== */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode .container {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  box-shadow: 0 0 10px rgba(255,255,255,0.05);
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode button {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+
+body.dark-mode form button {
+  background-color: #088c69 !important;
+  color: #cfffba;
+}
+
+body.dark-mode form button:hover {
+  background-color: #0fae8b !important;
+}
+
+body.dark-mode .result {
+  background-color: #222;
+  border: 1px solid #444;
+  padding: 10px;
+  border-radius: 6px;
+  color: #fff;
+}
+
+body.dark-mode .error {
+  color: #ff6b6b;
+}
+
+body.dark-mode footer {
+  background-color: #1a1a1a;
+  color: #ddd;
+  border-top: 1px solid #444;
+}
+
+body.dark-mode .footer-left a,
+body.dark-mode .footer-icons a,
+body.dark-mode .footer-right {
+  color: #ccc !important;
+}
+
+body.dark-mode .footer-middle-title {
+  color: #ddd;
+}
+
+body.dark-mode .footer-icons i {
+  color: #ccc;
+}
+
+/* Toggle Switch (optional placement) */
+.toggle-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.toggle-switch input[type="checkbox"] {
+  width: 40px;
+  height: 20px;
+  accent-color: green;
+}
+/* Remove background color from the history link */
+a.history-link {
+  background: none !important;
+    text-decoration: underline;
+}
+/* ========== DARK MODE ========== */
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode button {
+  background-color: #2a2a2a;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+

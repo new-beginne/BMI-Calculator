@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
   <style>
     * {
@@ -199,7 +198,7 @@
         <img src="https://i.postimg.cc/fbpVdbzn/mypic.jpg" alt="Profile">
         <div>Developed By <a href="https://facebook.com/md.nirob.hassan.12327" target="_blank">Md Nirob Hasan</a></div>
       </div>
-
+  
       <div class="footer-middle">
         <div class="footer-middle-title">Contact:</div>
         <div class="footer-icons">
@@ -217,12 +216,17 @@
           </a>
         </div>
       </div>
-
+  
       <div class="footer-right">
+        <div style="margin-bottom: 5px;">
+          <a href="{{ url_for('privacy') }}" style="margin-right: 15px; text-decoration: none; color: #555;">Privacy Policy</a>
+          <a href="{{ url_for('terms') }}" style="text-decoration: none; color: #555;">Terms & Conditions</a>
+        </div>
         All Rights Reserved by Nirob © 2025
       </div>
     </div>
   </footer>
+  
   <script>
     const toggleSwitch = document.getElementById('darkModeSwitch');
     const isDarkMode = localStorage.getItem('darkMode') === 'true';
@@ -248,7 +252,7 @@
 <script>
   async function viewHistory() {
     try {
-      const response = await fetch('/history');
+      const response = await fetch('/api/history');
       const data = await response.json();
 
       if (data.length === 0) {
